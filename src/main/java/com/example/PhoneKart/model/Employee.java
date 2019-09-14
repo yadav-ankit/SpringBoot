@@ -1,4 +1,4 @@
-package com.example.PhoneKart;
+package com.example.PhoneKart.model;
 
 public class Employee {
 

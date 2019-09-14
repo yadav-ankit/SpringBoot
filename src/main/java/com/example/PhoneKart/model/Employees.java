@@ -1,4 +1,4 @@
-package com.example.PhoneKart;
+package com.example.PhoneKart.model;
 
 import java.util.ArrayList;
 import java.util.List;

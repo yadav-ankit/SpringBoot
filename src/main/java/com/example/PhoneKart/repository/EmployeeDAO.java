@@ -1,6 +1,9 @@
-package com.example.PhoneKart;
+package com.example.PhoneKart.repository;
 
 import org.springframework.stereotype.Repository;
+
+import com.example.PhoneKart.model.Employee;
+import com.example.PhoneKart.model.Employees;
 
 
 @Repository

@@ -1,4 +1,4 @@
-package com.example.PhoneKart;
+package com.example.PhoneKart.resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.PhoneKart.model.Employee;
+import com.example.PhoneKart.model.Employees;
+import com.example.PhoneKart.model.Members;
+import com.example.PhoneKart.repository.EmployeeDAO;
+import com.example.PhoneKart.repository.MySQLRepository;
 
 
 @RestController
@@ -20,11 +27,31 @@ public class MyController {
 	@Autowired
     private EmployeeDAO employeeDao;
 	
+	@Autowired
+	MySQLRepository mySQLRepository;
+	
+	
+	@GetMapping(path="/birthday/", produces = "application/json")
+    public String getAllPersons()
+    {  
+		 List<Members>  mem = mySQLRepository.findAll();
+			
+			mem.forEach(s ->{
+				System.out.println(s.getFull_name());
+			});
+		
+		return "Inside PhoneKart";
+    }
 	
 	@GetMapping(path="/test/", produces = "application/json")
     public String getEmployeesd()
     {  
-		return "Ankit Yadav";
+		RestTemplate rr = new RestTemplate();
+		
+		rr.getForObject("http://localhost:8085/rest/", null);
+		
+		
+		return "Inside PhoneKart";
     }
 	
 	@SuppressWarnings("unchecked")
