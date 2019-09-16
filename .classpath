@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Others/Jar Files/jackson-databind-2.9.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Others/Jar Files/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Others/Jar Files/junit-4.10.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
