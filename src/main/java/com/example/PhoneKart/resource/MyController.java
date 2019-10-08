@@ -52,6 +52,7 @@ public class MyController {
 	  
 	    response.addCookie( cookie );
 	    
+	    int arr[] = new int[20];
 	    
 	    //  cookie.setSecure(true); only works with HTTPS;
 	    
@@ -142,7 +143,7 @@ public class MyController {
 	
 	
 	@SuppressWarnings("unchecked")
-	@GetMapping(path="/", produces = "application/json")
+	@GetMapping(path="/sample", produces = "application/json")
     public ResponseEntity<Object> getEmployees()
     {  Employees employeeList =  employeeDao.getAllEmployees();
         
