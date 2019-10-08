@@ -2,5 +2,10 @@ Following are done in this project:
 
 	1: Setting Headers 
 	2: Setting Cookie
-	3: Mapping multiRequest
-	4: 
+	3: Mapping PostRequest with RequestionTO using @RequestBody
+	4: CutomException
+	5: Sending Custom messages to the client
+	6: Handling with try catch blocks
+	7: hibernate.cfg.xml file
+	8: Diff b.w create/update table in the config file
+	9: 
