@@ -1,4 +1,4 @@
-package com.example.exceptions;
+package com.example.PhoneKart.exceptions;
 
 public class MemberNotFoundException {
 
