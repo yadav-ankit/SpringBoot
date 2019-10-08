@@ -3,11 +3,13 @@ package com.example.PhoneKart.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 
 @Entity
+@Table(name="members")
 public class Members {
 
 	  	@Id
@@ -27,8 +29,31 @@ public class Members {
 		@Column(name="email")
 	    private String email;
 	    
+		@Column(name="Age")
+	    private int age;
 	    
-	    public Members() {};
+		
+	    public String getEmail() {
+			return email;
+		}
+
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+
+		public int getAge() {
+			return age;
+		}
+
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+
+		public Members() {};
 	    
 	    
 		public int getId() {

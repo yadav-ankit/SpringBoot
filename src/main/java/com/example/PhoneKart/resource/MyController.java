@@ -21,19 +21,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.PhoneKart.DTO.LifeProducts;
+import com.example.PhoneKart.DTO.MembersTO;
 import com.example.PhoneKart.DTO.ProductTO;
 import com.example.PhoneKart.Security.Encryption;
 import com.example.PhoneKart.model.Employee;
 import com.example.PhoneKart.model.Employees;
 import com.example.PhoneKart.model.Members;
+import com.example.PhoneKart.repository.DatabaseQueries;
 import com.example.PhoneKart.repository.EmployeeDAO;
 import com.example.PhoneKart.repository.MySQLRepository;
+import com.example.service.FutureService;
 
 
 @RestController
@@ -46,6 +50,10 @@ public class MyController {
 	
 	@Autowired
 	MySQLRepository mySQLRepository;
+	
+	
+	@Autowired
+	FutureService futureService;
 	
 	private static Cookie setCookie( HttpServletResponse response, String nom, String valeur )throws IOException { 
 	    Cookie cookie = new Cookie( nom, URLEncoder.encode( valeur, "UTF-8" ) );
@@ -139,6 +147,24 @@ public class MyController {
 			});
 		
 		return response;
+    }
+	
+	@PostMapping(path="/addMembers", produces = "application/json")
+    public ResponseEntity<MembersTO> addMembers( ) throws IOException
+    {  
+		
+		MembersTO memberTo = new MembersTO();
+		memberTo.setAge(11);
+		memberTo.setName("Ankit");
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+	    responseHeaders.set("Ankit-Example-Header", 
+	      "Value-ResponseEntity_BuilderWithHttpHeaders");
+	    
+	    
+	    futureService.addMembers();
+	    
+		return new ResponseEntity<MembersTO>(memberTo, responseHeaders, HttpStatus.ACCEPTED);
     }
 	
 	
