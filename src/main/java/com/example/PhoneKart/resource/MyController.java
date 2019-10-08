@@ -2,20 +2,16 @@ package com.example.PhoneKart.resource;
 
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.core.ApplicationContext;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,19 +20,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import com.example.PhoneKart.DTO.LifeProducts;
 import com.example.PhoneKart.DTO.MembersTO;
 import com.example.PhoneKart.DTO.ProductTO;
 import com.example.PhoneKart.DTO.ResponseTO;
 import com.example.PhoneKart.Security.Encryption;
+import com.example.PhoneKart.configurations.PhoneConfig;
 import com.example.PhoneKart.model.Employee;
 import com.example.PhoneKart.model.Employees;
 import com.example.PhoneKart.model.Members;
-import com.example.PhoneKart.repository.DatabaseQueries;
 import com.example.PhoneKart.repository.EmployeeDAO;
 import com.example.PhoneKart.repository.MySQLRepository;
 import com.example.service.FutureService;
@@ -160,10 +153,19 @@ public class MyController {
 	@SuppressWarnings("unchecked")
 	@GetMapping(path = "/sample", produces = "application/json")
 	public ResponseEntity<Object> getEmployees() {
+		
 		Employees employeeList = employeeDao.getAllEmployees();
 
 		List<JSONObject> entities = new ArrayList<JSONObject>();
+		
+		AnnotationConfigApplicationContext cntxt = new AnnotationConfigApplicationContext(PhoneConfig.class);
 
+		FutureService fck = (FutureService) cntxt.getBean(FutureService.class);
+
+		System.out.println(fck.hashCode());
+		cntxt.close();
+		
+		/*
 		for (Employee emp : employeeList.getEmployeeList()) {
 			JSONObject entity = new JSONObject();
 
@@ -174,7 +176,7 @@ public class MyController {
 
 			entities.add(entity);
 		}
-
+		 */
 		return new ResponseEntity<Object>(entities, HttpStatus.OK);
 	}
 }

@@ -1,5 +1,6 @@
 package com.example.service;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.example.PhoneKart.DTO.MembersTO;

@@ -48,6 +48,9 @@ public class DatabaseQueries implements MySQLRepository {
 			person.setEmail(memberTO.getEmail());
 
 			personId = (Integer) session.save(person);
+			
+			Members m = session.load(Members.class,3);
+			
 			tx.commit();
 
 		} catch (HibernateException e) {
