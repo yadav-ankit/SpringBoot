@@ -42,11 +42,11 @@ public class DatabaseQueries implements MySQLRepository {
 			tx = session.beginTransaction();
 			
 			Members person = new Members();
-			person.setFull_name("Nirmal");
-			person.setContact_number("9090901234");
+			person.setFull_name("Minal");
+			person.setContact_number("9090909876");
 			person.setGender("M");
 			person.setAge(25);
-			person.setEmail("nirmal@gmail.com");
+			person.setEmail("minal@gmail.com");
 			
 			
 			personId = (Integer) session.save(person);
