@@ -3,7 +3,6 @@ package com.example.PhoneKart.repository;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,50 +15,48 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
+import com.example.PhoneKart.DTO.MembersTO;
 import com.example.PhoneKart.model.Members;
-
 
 public class DatabaseQueries implements MySQLRepository {
 
-	 private static SessionFactory factory;
-	 
-	 public  DatabaseQueries() {
-		 try {
-	         factory = new Configuration().configure().buildSessionFactory();
-	      } catch (Throwable ex) { 
-	         System.err.println("Failed to create sessionFactory object." + ex);
-	         throw new ExceptionInInitializerError(ex); 
-	      }
+	private static SessionFactory factory;
+
+	public DatabaseQueries() {
+		try {
+			factory = new Configuration().configure().buildSessionFactory();
+		} catch (Throwable ex) {
+			System.err.println("Failed to create sessionFactory object." + ex);
+			throw new ExceptionInInitializerError(ex);
+		}
 	}
-	 
+
 	@Override
-	public void addNewRecords() {
-		
-		 Session session = factory.openSession();
-	      Transaction tx = null;
-	      Integer personId = null;
+	public void addNewRecords(MembersTO memberTO) {
+
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Integer personId = null;
 		try {
 			tx = session.beginTransaction();
-			
+
 			Members person = new Members();
-			person.setFull_name("Minal");
-			person.setContact_number("9090909876");
-			person.setGender("M");
-			person.setAge(25);
-			person.setEmail("minal@gmail.com");
-			
-			
+			person.setFull_name(memberTO.getName());
+			person.setContact_number(memberTO.getPhone());
+			person.setGender(memberTO.getGender());
+			person.setAge(memberTO.getAge());
+			person.setEmail(memberTO.getEmail());
+
 			personId = (Integer) session.save(person);
 			tx.commit();
-			
-		}catch(HibernateException e) {
+
+		} catch (HibernateException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
 	}
-	
-	
+
 	@Override
 	public List<Members> findAll() {
 		// TODO Auto-generated method stub
@@ -203,6 +200,5 @@ public class DatabaseQueries implements MySQLRepository {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
+
 }
