@@ -1,5 +1,8 @@
 package com.example.service;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +27,10 @@ public class FutureService {
 			mem.printStackTrace();
 		}
 		
+	}
+	
+	public List<String> getSomeData(int x, String y) {
+		
+		return Arrays.asList("Ankit" , "Hemant");
 	}
 }

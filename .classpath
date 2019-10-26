@@ -32,5 +32,7 @@
 	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Projects/Jar Files/jackson-annotations-2.10.0.pr3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Projects/Jar Files/jackson-core-2.10.0.pr3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Projects/Jar Files/jackson-databind-2.10.0.pr3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Projects/Jar Files/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ankyadav/Downloads/Projects/Jar Files/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
