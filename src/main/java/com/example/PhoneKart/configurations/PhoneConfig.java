@@ -18,12 +18,14 @@ public class PhoneConfig {
 	public FutureService getService() {
 		return new FutureService();
 	}
-	
+	 
 	@Bean
 	@Scope(value="prototype")
 	public Book getBook() {
 		return new Book();
 	}
+	
+	
 	
 	
 }

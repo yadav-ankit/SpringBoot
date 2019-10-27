@@ -35,7 +35,7 @@ import com.example.PhoneKart.repository.MySQLRepository;
 import com.example.service.FutureService;
 
 @RestController
-@RequestMapping(path = "/employees")
+@RequestMapping(path = "/play")
 public class MyController {
 
 	@Autowired
@@ -47,6 +47,12 @@ public class MyController {
 	@Autowired
 	FutureService futureService;
 
+	@GetMapping(path = "/nothing", produces = "application/json")
+	public void doNothing() {
+		// This will call interface method which do not know if call math or physics
+		futureService.testPlay();
+	}
+	
 	private static Cookie setCookie(HttpServletResponse response, String nom, String valeur) throws IOException {
 		Cookie cookie = new Cookie(nom, URLEncoder.encode(valeur, "UTF-8"));
 
