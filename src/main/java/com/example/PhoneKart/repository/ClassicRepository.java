@@ -16,13 +16,21 @@ public class ClassicRepository {
 
 	private static SessionFactory sessionFactory;
 
+	
+	public ClassicRepository() {
+		try {
+			sessionFactory =   new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	@SuppressWarnings("deprecation")
 	public void getOrders() {
 		Session session = null;
 		Transaction tx;
 		Query query; 
 		try {
-			sessionFactory =   new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 			
 			session  = sessionFactory.getCurrentSession();
 
