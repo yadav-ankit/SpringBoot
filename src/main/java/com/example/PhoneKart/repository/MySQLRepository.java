@@ -9,7 +9,7 @@ import com.example.PhoneKart.model.Members;
 
 
 @Repository
-public interface MySQLRepository extends JpaRepository<Members, Integer> {
+public interface MySQLRepository  {
 
 	// List<Members> findByTitleContainingOrContentContaining(String text, String textAgain);
 	

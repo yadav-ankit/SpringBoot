@@ -17,12 +17,12 @@ import com.example.PhoneKart.repository.DatabaseQueries;
 public class FutureService {
 
 	DatabaseQueries databaseQueries;
-	
+
 	/*
-	 * Remove @Qualifier and you won't be able to build your App.
-	 * No compile time error but a run time exception.
+	 * Remove @Qualifier and you won't be able to build your App. No compile time
+	 * error but a run time exception.
 	 */
-	
+
 	@Autowired
 	@Qualifier("math")
 	SchoolComponent schoolComponent;
@@ -30,25 +30,22 @@ public class FutureService {
 	public void testPlay() {
 		schoolComponent.playinSchool();
 	}
-	
-	public void addMembers(MembersTO memberTO)  {
-		
-		
-		
+
+	public void addMembers(MembersTO memberTO) {
 		try {
 			databaseQueries = new DatabaseQueries();
 
 			databaseQueries.addNewRecords(memberTO);
 			throw new MemberNotFoundException("Just for fun");
-			
-		}catch(MemberNotFoundException mem) {
+
+		} catch (MemberNotFoundException mem) {
 			mem.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public List<String> getSomeData(int x, String y) {
-		
-		return Arrays.asList("Ankit" , "Hemant");
+
+		return Arrays.asList("Ankit", "Hemant");
 	}
 }
