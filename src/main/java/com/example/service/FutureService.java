@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import com.example.PhoneKart.DTO.MembersTO;
 import com.example.PhoneKart.exceptions.MemberNotFoundException;
 import com.example.PhoneKart.model.SchoolComponent;
+import com.example.PhoneKart.repository.ClassicRepository;
 import com.example.PhoneKart.repository.DatabaseQueries;
 
 @Service
 public class FutureService {
 
 	DatabaseQueries databaseQueries;
+	ClassicRepository  classicRepository;
 
 	/*
 	 * Remove @Qualifier and you won't be able to build your App. No compile time
@@ -44,8 +46,8 @@ public class FutureService {
 
 	}
 
-	public List<String> getSomeData(int x, String y) {
+	public void getSomeData() {
 
-		return Arrays.asList("Ankit", "Hemant");
+		classicRepository.getOrders(); 
 	}
 }

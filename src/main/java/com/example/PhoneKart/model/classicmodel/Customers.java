@@ -3,7 +3,13 @@ package com.example.PhoneKart.model.classicmodel;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -14,6 +20,13 @@ public class Customers {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerNumber;
 
+	
+	 @OneToMany(cascade=CascadeType.ALL)
+	 @JoinColumn(name="EMPLOYEE_ID")
+	 private Set<Orders> orders;
+	 
+	 
+	
 	@Column(name = "customerName")
 	private String customerName;
 

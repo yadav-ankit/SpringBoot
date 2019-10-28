@@ -41,7 +41,7 @@ public class MyController {
 	@Autowired
 	private EmployeeDAO employeeDao;
 
-	@Autowired
+	
 	MySQLRepository mySQLRepository;
 
 	@Autowired
@@ -77,7 +77,7 @@ public class MyController {
 		response.addCookie(c);
 		response.addCookie(another);
 
-		List<Members> mem = mySQLRepository.findAll();
+		List<Members> mem = null; //mySQLRepository.findAll();
 
 		mem.forEach(s -> {
 			System.out.println(s.getFull_name());
@@ -110,12 +110,6 @@ public class MyController {
 
 		response.addCookie(c);
 
-		List<Members> mem = mySQLRepository.findAll();
-
-		mem.forEach(s -> {
-			System.out.println(s.getFull_name());
-		});
-
 		return new ResponseEntity<ProductTO>(productTO, responseHeaders, HttpStatus.ACCEPTED);
 	}
 
@@ -130,7 +124,7 @@ public class MyController {
 		response.addCookie(c);
 		response.addCookie(another);
 
-		List<Members> mem = mySQLRepository.findAll();
+		List<Members> mem = null ;//mySQLRepository.findAll();
 
 		mem.forEach(s -> {
 			System.out.println(s.getFull_name());
