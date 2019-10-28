@@ -22,7 +22,7 @@ public class Customers {
 
 	
 	 @OneToMany(cascade=CascadeType.ALL)
-	 @JoinColumn(name="EMPLOYEE_ID")
+	 @JoinColumn(name="customerNumber")
 	 private Set<Orders> orders;
 	 
 	 

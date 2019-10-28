@@ -29,7 +29,7 @@ public class ClassicRepository {
 			 tx = session.beginTransaction();
 
 			 query = session
-					.createQuery("select c.customerName , count(c.customerName) from customers c join orders "
+					.createQuery("select c.customerName , count(c.customerName) from Customers c join Orders "
 							+ "o on c.customerNumber = o.customerNumber group by c.customerName");
 
 			System.out.println(" ---------------------------------------");
