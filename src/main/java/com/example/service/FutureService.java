@@ -18,6 +18,8 @@ import com.example.PhoneKart.repository.DatabaseQueries;
 public class FutureService {
 
 	DatabaseQueries databaseQueries;
+	
+	
 	ClassicRepository  classicRepository;
 
 	/*
@@ -48,6 +50,12 @@ public class FutureService {
 
 	public void getSomeData() {
 
-		classicRepository.getOrders(); 
+		try {
+			classicRepository = new  ClassicRepository();
+			classicRepository.getOrders();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		 
 	}
 }

@@ -10,10 +10,22 @@
       <property name = "hibernate.connection.username">root</property>
 	  <property name = "hibernate.connection.password">demo</property>
       <property name="hibernate.hbm2ddl.auto">update</property>
+       <property name="connection.url">jdbc:mysql://localhost:3306/classicmodels?useSSL=false</property>
       <property name="show_sql">true</property>
       
      
-       <mapping class="com.example.PhoneKart.model.Members"/>
+       <mapping class="com.example.PhoneKart.model.classicmodel.Customers"/>
+       <mapping class="com.example.PhoneKart.model.classicmodel.Orders"/>
+      <!-- 
+       <mapping class="com.example.PhoneKart.model.classicmodel.Employees"/>
+       <mapping class="com.example.PhoneKart.model.classicmodel.Offices"/>
+       <mapping class="com.example.PhoneKart.model.classicmodel.Orderdetails"/>
+       
+       <mapping class="com.example.PhoneKart.model.classicmodel.Payments"/>
+       <mapping class="com.example.PhoneKart.model.classicmodel.Productlines"/>
+       <mapping class="com.example.PhoneKart.model.classicmodel.Products"/>
+        -->
+          
             
    </session-factory>
 </hibernate-configuration>
