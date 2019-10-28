@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.example.service.FutureServiceTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.871 s <<< FAILURE! - in com.example.service.FutureServiceTest
+play(com.example.service.FutureServiceTest)  Time elapsed: 0.028 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at com.example.service.FutureServiceTest.play(FutureServiceTest.java:38)
+

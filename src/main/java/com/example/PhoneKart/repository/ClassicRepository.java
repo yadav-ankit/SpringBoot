@@ -6,21 +6,15 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+
+
 
 public class ClassicRepository {
 
 	private static SessionFactory sessionFactory;
-
-	public ClassicRepository() {
-		try {
-			sessionFactory = new Configuration().configure().buildSessionFactory();
-		} catch (Throwable ex) {
-			System.err.println("Failed to create sessionFactory object." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}
-	}
 
 	@SuppressWarnings("deprecation")
 	public void getOrders() {
@@ -28,6 +22,8 @@ public class ClassicRepository {
 		Transaction tx;
 		Query query; 
 		try {
+			sessionFactory =   new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			
 			session  = sessionFactory.getCurrentSession();
 
 			 tx = session.beginTransaction();

@@ -29,7 +29,7 @@ public class FutureServiceTest {
 		
 		//when(future.getSomeData(Mockito.anyInt(), Mockito.anyString() )).thenReturn(value);
 		
-		when(future.getSomeData(3, "a")).thenReturn(value).thenReturn(value1).thenReturn(value2);
+		//when(future.getSomeData()).thenReturn(value).thenReturn(value1).thenReturn(value2);
 		
 		assertEquals(2, value.size());
 		assertEquals(value1, value.stream().filter(s -> s.startsWith("A")).collect(Collectors.toList()));
