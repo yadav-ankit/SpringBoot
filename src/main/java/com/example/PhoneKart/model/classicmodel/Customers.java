@@ -12,6 +12,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name = "customers")
@@ -21,7 +22,7 @@ public class Customers {
 	private int customerNumber;
 
 	
-	 @OneToMany(cascade=CascadeType.ALL)
+	 @OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	 @JoinColumn(name="customerNumber")
 	 private Set<Orders> orders;
 	 
@@ -53,6 +54,9 @@ public class Customers {
 
 	@Column(name = "country")
 	private String country;
+	
+	@Column(name = "creditLimit")
+	private int creditLimit;
 
 	@Column(name = "salesRepEmployeeNumber")
 	private int salesRepEmployeeNumber;
@@ -153,8 +157,7 @@ public class Customers {
 		this.creditLimit = creditLimit;
 	}
 
-	@Column(name = "creditLimit")
-	private int creditLimit;
+	
 
 }
 

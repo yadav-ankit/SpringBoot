@@ -87,7 +87,7 @@ public class MyController {
 	}
 
 	@GetMapping(path = { "/test/", "/play/", "/rate/" }, produces = "application/json")
-	public ResponseEntity<ProductTO> getEmpl(HttpServletResponse response) throws IOException {
+	public ResponseEntity<ProductTO> getEmpl(HttpServletResponse response ) throws IOException {
 		ProductTO productTO = new ProductTO();
 
 		productTO.setId(23);
