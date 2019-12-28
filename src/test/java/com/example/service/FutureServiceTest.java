@@ -35,7 +35,7 @@ public class FutureServiceTest {
 		assertEquals(value1, value.stream().filter(s -> s.startsWith("A")).collect(Collectors.toList()));
 		
 		
-		assertEquals(2, value2.size());
+		assertEquals(0, value2.size());
 	}
 	
 	@Test(expected = RuntimeException.class)
