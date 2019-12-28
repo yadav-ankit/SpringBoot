@@ -1,19 +1,14 @@
 package com.example.PhoneKart.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Component;
+import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.PhoneKart.DTO.MembersTO;
 import com.example.PhoneKart.model.Members;
@@ -28,6 +23,34 @@ public class DatabaseQueries implements MySQLRepository {
 		} catch (Throwable ex) {
 			System.err.println("Failed to create sessionFactory object." + ex);
 			throw new ExceptionInInitializerError(ex);
+		}
+	}
+	
+	@Transactional
+	public void addNewRecordsWithTransactions(MembersTO memberTO) {
+		Session session = factory.openSession();
+		Integer personId = null;
+		try {
+			Members person = new Members();
+			person.setFull_name(memberTO.getName());
+			person.setContact_number(memberTO.getPhone());
+			person.setGender(memberTO.getGender());
+			person.setAge(memberTO.getAge());
+			person.setEmail(memberTO.getEmail());
+
+			personId = (Integer) session.save(person);
+			
+			Members m = session.load(Members.class,3);
+			
+			Query query = session.createQuery("From Product");
+			
+			query.setFirstResult(3);
+			query.setMaxResults(34);
+			
+			List members = query.getResultList();
+			
+		}catch(HibernateException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -49,7 +72,7 @@ public class DatabaseQueries implements MySQLRepository {
 
 			personId = (Integer) session.save(person);
 			
-			Members m = session.load(Members.class,3);
+			//MembersTO m = session.load(Members.class,3);
 			
 			tx.commit();
 

@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.example.PhoneKart.configurations.PhoneConfig;
 import com.example.PhoneKart.model.Book;
@@ -14,6 +15,7 @@ import com.example.PhoneKart.model.MathComponent;
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.example" })
 //@EnableJpaRepositories("com.example.repository")
+@EnableTransactionManagement
 public class PhoneKartApplication {
 
 	public static void main(String[] args) {
